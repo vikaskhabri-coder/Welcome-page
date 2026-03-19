@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CAS & Watcho — Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f8fc;
+      --white: #ffffff;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --grad: linear-gradient(135deg, #7c3aed, #06b6d4);
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: rgba(0,0,0,0.07);
+      --card-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      --hover-shadow: 0 12px 40px rgba(124,58,237,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(247,248,252,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      padding: 9px 22px;
+      background: var(--grad);
+      color: white !important;
+      border-radius: 25px;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      box-shadow: 0 4px 14px rgba(124,58,237,0.3);
+      transition: opacity 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.9; transform: scale(1.04) !important; color: white !important; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative background shapes */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: -50px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-left { animation: fadeLeft 0.8s cubic-bezier(0.34,1.2,0.64,1) both; }
+
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(124,58,237,0.08);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero-title span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 14px 30px;
+      background: var(--grad);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 24px rgba(124,58,237,0.35);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.92; }
+
+    .btn-secondary {
+      padding: 14px 24px;
+      background: var(--white);
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--hover-shadow); }
+
+    /* Hero right - stats card */
+    .hero-right {
+      animation: fadeRight 0.8s 0.2s cubic-bezier(0.34,1.2,0.64,1) both;
+    }
+
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .dashboard-preview {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .preview-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .preview-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .preview-dot:nth-child(1) { background: #ff5f57; }
+    .preview-dot:nth-child(2) { background: #febc2e; }
+    .preview-dot:nth-child(3) { background: #28c840; }
+
+    .preview-title {
+      margin-left: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .mini-stat {
+      background: var(--bg);
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s;
+    }
+    .mini-stat:hover { transform: scale(1.02); }
+
+    .mini-stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mini-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .mini-stat-change {
+      font-size: 11px;
+      color: #22c55e;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .mini-stat-change.down { color: #ef4444; }
+
+    .mini-chart {
+      background: var(--bg);
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .chart-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 60px;
+    }
+
+    .chart-bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      background: var(--grad);
+      opacity: 0.15;
+      transition: opacity 0.2s;
+      animation: barGrow 1s ease both;
+    }
+    .chart-bar:hover { opacity: 0.4; }
+    .chart-bar.active { opacity: 0.8; }
+
+    @keyframes barGrow {
+      from { transform: scaleY(0); transform-origin: bottom; }
+      to   { transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    /* ── Metrics Section ── */
+    .metrics-section {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 48px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .metric-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: fadeUp 0.6s both;
+    }
+    .metric-card:hover { transform: translateY(-6px); box-shadow: var(--hover-shadow); }
+    .metric-card:nth-child(1) { animation-delay: 0.1s; }
+    .metric-card:nth-child(2) { animation-delay: 0.2s; }
+    .metric-card:nth-child(3) { animation-delay: 0.3s; }
+    .metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .metric-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 16px;
+    }
+    .metric-icon.purple { background: rgba(124,58,237,0.1); }
+    .metric-icon.cyan   { background: rgba(6,182,212,0.1); }
+    .metric-icon.green  { background: rgba(34,197,94,0.1); }
+    .metric-icon.orange { background: rgba(249,115,22,0.1); }
+
+    .metric-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .metric-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .metric-trend {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #22c55e;
+      background: rgba(34,197,94,0.1);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── Features ── */
+    .features-section {
+      background: var(--white);
+      padding: 80px 48px;
+    }
+
+    .features-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--hover-shadow);
+      border-color: rgba(124,58,237,0.2);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Team ── */
+    .team-section {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); }
+
+    .team-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 16px;
+      box-shadow: 0 4px 16px rgba(124,58,237,0.25);
+    }
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .team-contact {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .team-contact:hover { color: var(--accent); }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      background: var(--grad);
+      padding: 80px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.8);
+      font-size: 16px;
+      margin-bottom: 36px;
+      position: relative; z-index: 1;
+    }
+
+    .btn-white {
+      padding: 15px 36px;
+      background: white;
+      color: var(--accent);
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative; z-index: 1;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.5);
+      padding: 30px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: white;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-title { font-size: 36px; }
+      .metrics-section, .team-section { padding: 60px 20px; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .features-section { padding: 60px 20px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 60px 20px; }
+      .cta-section h2 { font-size: 28px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">📊</div>
+    CAS & Watcho
+  </a>
+  <ul class="nav-links">
+    <li><a href="#metrics">Metrics</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="https://vikaskhabri-coder.github.io/Login-Dashboard/dashboard-login.html" class="nav-cta">🔐 Access Dashboard</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">📊 Live Dashboard · Updated Daily</div>
+      <h1 class="hero-title">
+        Welcome to<br>
+        <span>CAS & Watcho</span><br>
+        Dashboard
+      </h1>
+      <p class="hero-desc">
+        <!-- UPDATE THIS DESCRIPTION -->
+        Your central hub for real-time analytics, performance tracking, and data-driven insights. Monitor key metrics and make smarter decisions faster.
+      </p>
+      <div class="hero-btns">
+        <a href="https://vikaskhabri-coder.github.io/Login-Dashboard/dashboard-login.html" class="btn-primary">
+          🔐 Access Dashboard
+        </a>
+        <a href="#metrics" class="btn-secondary">
+          📈 View Metrics
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="dashboard-preview">
+        <div class="preview-header">
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <span class="preview-title">CAS & Watcho · Live Report</span>
+        </div>
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <div class="mini-stat-label">Total Views</div>
+            <div class="mini-stat-value">24.8K</div>
+            <div class="mini-stat-change">↑ 12.4%</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-label">Active Users</div>
+            <div class="mini-stat-value">1,842</div>
+            <div class="mini-stat-change">↑ 8.1%</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-label">Avg. Session</div>
+            <div class="mini-stat-value">4.2m</div>
+            <div class="mini-stat-change down">↓ 2.3%</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-label">Conversions</div>
+            <div class="mini-stat-value">68%</div>
+            <div class="mini-stat-change">↑ 5.7%</div>
+          </div>
+        </div>
+        <div class="mini-chart">
+          <div class="chart-label">Weekly Performance</div>
+          <div class="chart-bars">
+            <div class="chart-bar" style="height:40%" ></div>
+            <div class="chart-bar" style="height:60%"></div>
+            <div class="chart-bar" style="height:45%"></div>
+            <div class="chart-bar" style="height:80%"></div>
+            <div class="chart-bar" style="height:65%"></div>
+            <div class="chart-bar active" style="height:90%"></div>
+            <div class="chart-bar" style="height:75%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Key Metrics ── -->
+<section class="metrics-section" id="metrics">
+  <div class="section-label">Key Metrics</div>
+  <h2 class="section-title">Dashboard at a Glance</h2>
+  <p class="section-desc">
+    <!-- UPDATE THIS -->
+    Real-time numbers that matter most to your business performance.
+  </p>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon purple">📊</div>
+      <div class="metric-value">24.8K</div>
+      <div class="metric-label">Total Views</div>
+      <div class="metric-trend">↑ 12.4% this week</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon cyan">👥</div>
+      <div class="metric-value">1,842</div>
+      <div class="metric-label">Active Users</div>
+      <div class="metric-trend">↑ 8.1% this week</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon green">✅</div>
+      <div class="metric-value">68%</div>
+      <div class="metric-label">Conversion Rate</div>
+      <div class="metric-trend">↑ 5.7% this week</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon orange">📈</div>
+      <div class="metric-value">98%</div>
+      <div class="metric-label">Data Accuracy</div>
+      <div class="metric-trend">↑ 1.2% this week</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ── -->
+<section class="features-section" id="features">
+  <div class="features-inner">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything You Need</h2>
+    <p class="section-desc">Built to give your team powerful insights in one place.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <div class="feature-title">Real-Time Analytics</div>
+        <p class="feature-desc">Monitor live data from your CAS & Watcho platform with instant updates and dynamic charts.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🤖</span>
+        <div class="feature-title">AI Chatbot Assistant</div>
+        <p class="feature-desc">Ask questions about your data in plain English and get instant answers powered by your Google Sheet.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔐</span>
+        <div class="feature-title">Secure Access</div>
+        <p class="feature-desc">Password protected login with Google account verification ensures only authorised users can access the data.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📄</span>
+        <div class="feature-title">PDF Reports</div>
+        <p class="feature-desc">Download detailed PDF reports directly from the dashboard for offline sharing and presentations.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📱</span>
+        <div class="feature-title">Mobile Friendly</div>
+        <p class="feature-desc">Fully responsive design works seamlessly across desktop, tablet, and mobile devices.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-title">Live Data Sync</div>
+        <p class="feature-desc">Automatically syncs with Google Sheets so your dashboard always reflects the latest numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Team ── -->
+<section class="team-section" id="team">
+  <div class="section-label">Team</div>
+  <h2 class="section-title">Meet the Team</h2>
+  <p class="section-desc">The people behind the CAS & Watcho dashboard.</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">👨‍💼</div>
+      <div class="team-name">Your Name Here</div>
+      <div class="team-role">Dashboard Lead</div>
+      <a href="mailto:your@email.com" class="team-contact">✉️ your@email.com</a>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👩‍💻</div>
+      <div class="team-name">Team Member</div>
+      <div class="team-role">Data Analyst</div>
+      <a href="mailto:team@email.com" class="team-contact">✉️ team@email.com</a>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨‍🔧</div>
+      <div class="team-name">Team Member</div>
+      <div class="team-role">Support Lead</div>
+      <a href="mailto:support@email.com" class="team-contact">✉️ support@email.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <h2>Ready to Explore the Dashboard?</h2>
+  <p>Login securely and get full access to all your CAS & Watcho analytics.</p>
+  <a href="https://vikaskhabri-coder.github.io/Login-Dashboard/dashboard-login.html" class="btn-white">
+    🔐 Access Dashboard Now
+  </a>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="footer-logo">📊 CAS & Watcho</div>
+  <div>© 2026 CAS & Watcho. All rights reserved.</div>
+  <div>Built with ❤️ for smarter decisions</div>
+</footer>
+
+</body>
+</html>
