@@ -99,9 +99,9 @@
     }
 
     .hero-inner {
-      max-width: 1100px; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
+      max-width: 700px; width: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
     }
 
     .hero-left { animation: fadeLeft 0.8s cubic-bezier(0.34,1.2,0.64,1) both; }
@@ -135,10 +135,10 @@
 
     .hero-desc {
       font-size: 16px; color: var(--muted);
-      line-height: 1.7; margin-bottom: 36px; max-width: 420px;
+      line-height: 1.7; margin-bottom: 36px; max-width: 520px;
     }
 
-    .hero-btns { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .hero-btns { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
 
     .btn-primary {
       padding: 14px 30px; background: var(--grad);
@@ -369,66 +369,6 @@
       </div>
     </div>
 
-    <div class="hero-right">
-      <div class="dashboard-preview">
-        <div class="preview-header">
-          <div class="preview-dot"></div>
-          <div class="preview-dot"></div>
-          <div class="preview-dot"></div>
-          <span class="preview-title">CAS & Watcho HE · Live Report</span>
-        </div>
-
-        <!--
-        ╔══════════════════════════════════════╗
-        ║   📝 EDIT YOUR NUMBERS HERE          ║
-        ║   Replace 0 with your actual values  ║
-        ║   from your Looker Studio dashboard  ║
-        ╚══════════════════════════════════════╝
-        -->
-        <div class="mini-stats">
-
-          <div class="mini-stat">
-            <div class="mini-stat-label">Total Views</div>        <!-- ← Change label -->
-            <div class="mini-stat-value">0</div>                  <!-- ← Change number -->
-            <div class="mini-stat-change">↑ 0%</div>              <!-- ← Change % (green) -->
-          </div>
-
-          <div class="mini-stat">
-            <div class="mini-stat-label">Active Users</div>       <!-- ← Change label -->
-            <div class="mini-stat-value">0</div>                  <!-- ← Change number -->
-            <div class="mini-stat-change">↑ 0%</div>              <!-- ← Change % (green) -->
-          </div>
-
-          <div class="mini-stat">
-            <div class="mini-stat-label">Avg. Session</div>       <!-- ← Change label -->
-            <div class="mini-stat-value">0</div>                  <!-- ← Change number -->
-            <div class="mini-stat-change down">↓ 0%</div>         <!-- ← Change % (red = .down) -->
-          </div>
-
-          <div class="mini-stat">
-            <div class="mini-stat-label">Conversions</div>        <!-- ← Change label -->
-            <div class="mini-stat-value">0%</div>                 <!-- ← Change number -->
-            <div class="mini-stat-change">↑ 0%</div>              <!-- ← Change % (green) -->
-          </div>
-
-        </div>
-
-        <!-- Chart: change height % to reflect your weekly trend -->
-        <div class="mini-chart">
-          <div class="chart-label">Weekly Performance</div>
-          <div class="chart-bars">
-            <div class="chart-bar" style="height:40%"></div>           <!-- Mon ← edit % -->
-            <div class="chart-bar" style="height:60%"></div>           <!-- Tue ← edit % -->
-            <div class="chart-bar" style="height:45%"></div>           <!-- Wed ← edit % -->
-            <div class="chart-bar" style="height:80%"></div>           <!-- Thu ← edit % -->
-            <div class="chart-bar" style="height:65%"></div>           <!-- Fri ← edit % -->
-            <div class="chart-bar active" style="height:90%"></div>    <!-- Sat ← edit % -->
-            <div class="chart-bar" style="height:75%"></div>           <!-- Sun ← edit % -->
-          </div>
-        </div>
-
-      </div>
-    </div>
   </div>
 </section>
 
